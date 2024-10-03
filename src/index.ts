@@ -4,7 +4,6 @@ import figmaRestApi from "./api/";
 import {
   writeToFile,
   findAllByValue,
-  filterPrivateComponents,
   camelCaseToDash,
   createFolder,
 } from "./utils";
