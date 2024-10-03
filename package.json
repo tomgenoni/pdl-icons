@@ -1,0 +1,27 @@
+{
+  "name": "export-figma-svg",
+  "version": "2.0.0",
+  "description": "Export SVGs from Figma",
+  "main": "index.ts",
+  "scripts": {
+    "test": "TZ=Asia/Singapore jest"
+  },
+  "author": "Jacob Tan <jacobtyq@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.1",
+    "fs": "^0.0.1-security",
+    "pg": "^8.7.1",
+    "ts-node": "^10.9.1",
+    "tsc": "^2.0.4",
+    "typescript": "^4.8.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.0.0",
+    "@types/node": "^18.7.14",
+    "ts-jest": "^28.0.8",
+    "jest": "^29.0.1"
+  },
+  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
+}
