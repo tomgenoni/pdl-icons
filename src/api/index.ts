@@ -1,10 +1,9 @@
-import axios from 'axios'
+import axios from "axios";
 const figmaRestApi = axios.create({
-  baseURL:
-    process.env.FIGMA_BASE_URL,
+  baseURL: process.env.FIGMA_BASE_URL,
   headers: {
-    'X-Figma-Token': process.env.DEV_ACCESS_TOKEN
-  }
-})
+    "X-Figma-Token": process.env.DEV_ACCESS_TOKEN,
+  },
+});
 
-export default figmaRestApi
+export default figmaRestApi;
