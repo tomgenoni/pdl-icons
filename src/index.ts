@@ -32,39 +32,35 @@ const svgExporter = async () => {
       await response.data.nodes[process.env.FIGMA_PROJECT_NODE_ID].document
         .children;
 
-    // If ignoring private components
-    let svgs;
-    if (process.env.FILTER_PRIVATE_COMPONENTS === "false") {
-      svgs = findAllByValue(children, "COMPONENT");
-    } else {
-      svgs = filterPrivateComponents(findAllByValue(children, "COMPONENT"));
-    }
+    const svgs = findAllByValue(children, "COMPONENT");
+    const sets = findAllByValue(children, "COMPONENT_SET");
 
-    const numOfSvgs = svgs.length;
+    const filteredSVGs = svgs
+      .filter((svg) => svg.name === "size=x-lg")
+      .map((svg, index) => ({
+        ...svg,
+        name: sets[index].name,
+      }));
 
-    console.log("Number of SVGs", numOfSvgs);
+    const numOfSvgs = filteredSVGs.length;
 
     createFolder(OUTPUT_FOLDER);
 
     for (let i = 0; i < numOfSvgs; i += RATE_LIMIT) {
-      const requests = svgs.slice(i, i + RATE_LIMIT).map(async (svg) => {
-        // Get URL of each SVG
-        let svgName = await svg.name;
+      const requests = filteredSVGs
+        .slice(i, i + RATE_LIMIT)
+        .map(async (svg) => {
+          // Get URL of each SVG
+          const svgName = svg.name;
+          const svgURL = await getSVGURL(svg.id);
 
-        if (svgName.includes("/")) {
-          const nameArr = svg.name.split("/").join("-");
-          svgName = nameArr;
-        }
-
-        const svgURL = await getSVGURL(svg.id);
-
-        // Get SVG DOM
-        const svgDOM = await axios.get(svgURL.data.images[svg.id]);
-        writeToFile(
-          OUTPUT_FOLDER + `${camelCaseToDash(svgName)}.svg`,
-          svgDOM.data,
-        );
-      });
+          // Get SVG DOM
+          const svgDOM = await axios.get(svgURL.data.images[svg.id]);
+          writeToFile(
+            OUTPUT_FOLDER + `${camelCaseToDash(svgName)}.svg`,
+            svgDOM.data,
+          );
+        });
 
       await Promise.all(requests)
         .then(() => {
