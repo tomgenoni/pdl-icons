@@ -13,13 +13,13 @@ const getProjectNode = async () => {
     "files/" +
       process.env.FIGMA_PROJECT_ID +
       "/nodes?ids=" +
-      process.env.FIGMA_PROJECT_NODE_ID,
+      process.env.FIGMA_PROJECT_NODE_ID
   );
 };
 
 const getSVGURL = async (id: string) => {
   return await figmaRestApi(
-    "images/" + process.env.FIGMA_PROJECT_ID + "/?ids=" + id + "&format=svg",
+    "images/" + process.env.FIGMA_PROJECT_ID + "/?ids=" + id + "&format=svg"
   );
 };
 
@@ -60,19 +60,22 @@ const svgExporter = async () => {
           const svgDOM = await response.text();
           writeToFile(
             OUTPUT_FOLDER + `${camelCaseToDash(svgName)}.svg`,
-            svgDOM,
+            svgDOM
           );
         });
 
       await Promise.all(requests)
         .then(() => {
-          console.log(`Wait for ${WAIT_TIME_IN_SECONDS} seconds`);
-          return new Promise<void>((resolve) => {
-            setTimeout(() => {
-              console.log(`${WAIT_TIME_IN_SECONDS} seconds!`);
-              resolve();
-            }, WAIT_TIME_IN_SECONDS * 1000);
-          });
+          if (numOfSvgs > RATE_LIMIT) {
+            // Only wait if more than one batch is needed
+            console.log(`Wait for ${WAIT_TIME_IN_SECONDS} seconds`);
+            return new Promise<void>((resolve) => {
+              setTimeout(() => {
+                console.log(`${WAIT_TIME_IN_SECONDS} seconds!`);
+                resolve();
+              }, WAIT_TIME_IN_SECONDS * 1000);
+            });
+          }
         })
         .catch((err) => console.error(`Error processing ${i} - Error ${err}`));
     }
