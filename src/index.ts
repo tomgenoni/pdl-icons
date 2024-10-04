@@ -1,41 +1,30 @@
-import "dotenv/config";
-import axios from "axios";
-import figmaRestApi from "./api/";
-import {
-  writeToFile,
-  findAllByValue,
-  camelCaseToDash,
-  createFolder,
-} from "./utils";
-import { OUTPUT_FOLDER, RATE_LIMIT, WAIT_TIME_IN_SECONDS } from "./constants";
+import 'dotenv/config';
+import figmaRestApi from './api/';
+import { writeToFile, findAllByValue, camelCaseToDash, createFolder } from './utils';
+import { OUTPUT_FOLDER, RATE_LIMIT, WAIT_TIME_IN_SECONDS } from './constants';
 
 const getProjectNode = async () => {
   return await figmaRestApi.get(
-    "files/" +
-      process.env.FIGMA_PROJECT_ID +
-      "/nodes?ids=" +
-      process.env.FIGMA_PROJECT_NODE_ID,
+    'files/' + process.env.FIGMA_PROJECT_ID + '/nodes?ids=' + process.env.FIGMA_PROJECT_NODE_ID
   );
 };
 
 const getSVGURL = async (id: string) => {
   return await figmaRestApi.get(
-    "images/" + process.env.FIGMA_PROJECT_ID + "/?ids=" + id + "&format=svg",
+    'images/' + process.env.FIGMA_PROJECT_ID + '/?ids=' + id + '&format=svg'
   );
 };
 
 const svgExporter = async () => {
   try {
     const response = await getProjectNode();
-    const children =
-      await response.data.nodes[process.env.FIGMA_PROJECT_NODE_ID].document
-        .children;
+    const children = await response.data.nodes[process.env.FIGMA_PROJECT_NODE_ID].document.children;
 
-    const svgs = findAllByValue(children, "COMPONENT");
-    const sets = findAllByValue(children, "COMPONENT_SET");
+    const svgs = findAllByValue(children, 'COMPONENT');
+    const sets = findAllByValue(children, 'COMPONENT_SET');
 
     const filteredSVGs = svgs
-      .filter((svg) => svg.name === "size=x-lg")
+      .filter((svg) => svg.name === 'size=x-lg')
       .map((svg, index) => ({
         ...svg,
         name: sets[index].name,
@@ -46,20 +35,16 @@ const svgExporter = async () => {
     createFolder(OUTPUT_FOLDER);
 
     for (let i = 0; i < numOfSvgs; i += RATE_LIMIT) {
-      const requests = filteredSVGs
-        .slice(i, i + RATE_LIMIT)
-        .map(async (svg) => {
-          // Get URL of each SVG
-          const svgName = svg.name;
-          const svgURL = await getSVGURL(svg.id);
+      const requests = filteredSVGs.slice(i, i + RATE_LIMIT).map(async (svg) => {
+        // Get URL of each SVG
+        const svgName = svg.name;
+        const svgURL = await getSVGURL(svg.id);
 
-          // Get SVG DOM
-          const svgDOM = await axios.get(svgURL.data.images[svg.id]);
-          writeToFile(
-            OUTPUT_FOLDER + `${camelCaseToDash(svgName)}.svg`,
-            svgDOM.data,
-          );
-        });
+        // Get SVG DOM using fetch
+        const response = await fetch(svgURL.data.images[svg.id]);
+        const svgDOM = await response.text();
+        writeToFile(OUTPUT_FOLDER + `${camelCaseToDash(svgName)}.svg`, svgDOM);
+      });
 
       await Promise.all(requests)
         .then(() => {
@@ -71,7 +56,7 @@ const svgExporter = async () => {
             }, WAIT_TIME_IN_SECONDS * 1000);
           });
         })
-        .catch((err) => console.error(`Error proccessing ${i} - Error ${err}`));
+        .catch((err) => console.error(`Error processing ${i} - Error ${err}`));
     }
   } catch (err) {
     console.error(err);
