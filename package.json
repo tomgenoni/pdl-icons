@@ -7,7 +7,7 @@
     "preinstall": "npx only-allow pnpm",
     "build": "pnpm run build:svg && pnpm run build:react",
     "build:svg": "ts-node src/index.ts",
-    "build:react": "svgr --replace-attr-values '#000=currentColor' --typescript --out-dir dist/components icons",
+    "build:react": "svgr --out-dir dist/components icons --config-file svgr.config.json",
     "test": "jest"
   },
   "author": "Tom Genoni <tom@genoni.studio>",

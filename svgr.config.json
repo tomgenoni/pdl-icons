@@ -1,0 +1,4 @@
+{
+  "typescript": true,
+  "replaceAttrValues": { "#000": "currentColor" }
+}
