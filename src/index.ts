@@ -1,5 +1,5 @@
 import "dotenv/config";
-import figmaRestApi from "./api/"; // Import the new figmaRestApi function
+import figmaRestApi from "./api/";
 import {
   writeToFile,
   findAllByValue,
@@ -29,12 +29,16 @@ const svgExporter = async () => {
     const children =
       response.nodes[process.env.FIGMA_PROJECT_NODE_ID].document.children;
 
-    const svgs = findAllByValue(children, "COMPONENT");
+    // Have to get component set and component separately because the
+    // name of the SVG is in the component set.
     const sets = findAllByValue(children, "COMPONENT_SET");
+    const svgs = findAllByValue(children, "COMPONENT");
 
+    // When we iterate through the SVGs, we replace the name of the SVG
+    // with the name of the component set, like "AllBots".
     const filteredSVGs = svgs
       .filter((svg) => svg.name === "size=x-lg")
-      .map((svg, index) => ({
+      .map((svg, index: number) => ({
         ...svg,
         name: sets[index].name,
       }));
