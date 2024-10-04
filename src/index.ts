@@ -1,30 +1,39 @@
-import 'dotenv/config';
-import figmaRestApi from './api/';
-import { writeToFile, findAllByValue, camelCaseToDash, createFolder } from './utils';
-import { OUTPUT_FOLDER, RATE_LIMIT, WAIT_TIME_IN_SECONDS } from './constants';
+import "dotenv/config";
+import figmaRestApi from "./api/"; // Import the new figmaRestApi function
+import {
+  writeToFile,
+  findAllByValue,
+  camelCaseToDash,
+  createFolder,
+} from "./utils";
+import { OUTPUT_FOLDER, RATE_LIMIT, WAIT_TIME_IN_SECONDS } from "./constants";
 
 const getProjectNode = async () => {
-  return await figmaRestApi.get(
-    'files/' + process.env.FIGMA_PROJECT_ID + '/nodes?ids=' + process.env.FIGMA_PROJECT_NODE_ID
+  return await figmaRestApi(
+    "files/" +
+      process.env.FIGMA_PROJECT_ID +
+      "/nodes?ids=" +
+      process.env.FIGMA_PROJECT_NODE_ID,
   );
 };
 
 const getSVGURL = async (id: string) => {
-  return await figmaRestApi.get(
-    'images/' + process.env.FIGMA_PROJECT_ID + '/?ids=' + id + '&format=svg'
+  return await figmaRestApi(
+    "images/" + process.env.FIGMA_PROJECT_ID + "/?ids=" + id + "&format=svg",
   );
 };
 
 const svgExporter = async () => {
   try {
     const response = await getProjectNode();
-    const children = await response.data.nodes[process.env.FIGMA_PROJECT_NODE_ID].document.children;
+    const children =
+      response.nodes[process.env.FIGMA_PROJECT_NODE_ID].document.children;
 
-    const svgs = findAllByValue(children, 'COMPONENT');
-    const sets = findAllByValue(children, 'COMPONENT_SET');
+    const svgs = findAllByValue(children, "COMPONENT");
+    const sets = findAllByValue(children, "COMPONENT_SET");
 
     const filteredSVGs = svgs
-      .filter((svg) => svg.name === 'size=x-lg')
+      .filter((svg) => svg.name === "size=x-lg")
       .map((svg, index) => ({
         ...svg,
         name: sets[index].name,
@@ -35,21 +44,26 @@ const svgExporter = async () => {
     createFolder(OUTPUT_FOLDER);
 
     for (let i = 0; i < numOfSvgs; i += RATE_LIMIT) {
-      const requests = filteredSVGs.slice(i, i + RATE_LIMIT).map(async (svg) => {
-        // Get URL of each SVG
-        const svgName = svg.name;
-        const svgURL = await getSVGURL(svg.id);
+      const requests = filteredSVGs
+        .slice(i, i + RATE_LIMIT)
+        .map(async (svg) => {
+          // Get URL of each SVG
+          const svgName = svg.name;
+          const svgURL = await getSVGURL(svg.id);
 
-        // Get SVG DOM using fetch
-        const response = await fetch(svgURL.data.images[svg.id]);
-        const svgDOM = await response.text();
-        writeToFile(OUTPUT_FOLDER + `${camelCaseToDash(svgName)}.svg`, svgDOM);
-      });
+          // Get SVG DOM using fetch
+          const response = await fetch(svgURL.images[svg.id]);
+          const svgDOM = await response.text();
+          writeToFile(
+            OUTPUT_FOLDER + `${camelCaseToDash(svgName)}.svg`,
+            svgDOM,
+          );
+        });
 
       await Promise.all(requests)
         .then(() => {
           console.log(`Wait for ${WAIT_TIME_IN_SECONDS} seconds`);
-          return new Promise<void>(function (resolve) {
+          return new Promise<void>((resolve) => {
             setTimeout(() => {
               console.log(`${WAIT_TIME_IN_SECONDS} seconds!`);
               resolve();

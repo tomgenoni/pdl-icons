@@ -1,6 +1,6 @@
 node_modules
 .env
-src/svg
+dist
 
 built/
 # TS -incremental file
