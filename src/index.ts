@@ -8,6 +8,11 @@ import {
 } from "./utils";
 import { OUTPUT_FOLDER, RATE_LIMIT, WAIT_TIME_IN_SECONDS } from "./constants";
 
+interface SVG {
+  id: string;
+  name: string;
+}
+
 const getProjectNode = async () => {
   return await figmaRestApi(
     "files/" +
@@ -29,14 +34,13 @@ const svgExporter = async () => {
     const children =
       response.nodes[process.env.FIGMA_PROJECT_NODE_ID].document.children;
 
-    // Have to get component set and component separately because the
-    // name of the SVG is in the component set.
+    // Use the SVG interface for type safety
     const sets = findAllByValue(children, "COMPONENT_SET");
-    const svgs = findAllByValue(children, "COMPONENT");
+    const svgs: SVG[] = findAllByValue(children, "COMPONENT");
 
     // When we iterate through the SVGs, we replace the name of the SVG
     // with the name of the component set, like "AllBots".
-    const filteredSVGs = svgs
+    const filteredSVGs: SVG[] = svgs
       .filter((svg) => svg.name === "size=x-lg")
       .map((svg, index: number) => ({
         ...svg,
