@@ -32,7 +32,8 @@ const svgExporter = async () => {
   try {
     const response = await getProjectNode();
     const children =
-      response.nodes[process.env.FIGMA_PROJECT_NODE_ID].document.children;
+      response.nodes[process.env.FIGMA_PROJECT_NODE_ID as string].document
+        .children;
 
     // Use the SVG interface for type safety
     const sets = findAllByValue(children, "COMPONENT_SET");
