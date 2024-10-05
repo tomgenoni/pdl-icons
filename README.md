@@ -1,34 +1,24 @@
-# Export SVGs from Figma via CLI
+# Export Figma SVGs to build platform icons
 
-## Getting Started
+This project is a series of scripts that:
 
-Export your SVGs that are in your Figma project easily via CLI.
+1. Exports SVGs from Figma into a branch
+2. After merging new icons to the `main` branch, publishes new version to GitHub Packages
+3. On package install into a project, converts the SVGs to platform-specific icons
 
-![Gif of exporting process](documentation/export-in-action.gif)
+## Requirements
 
-## Pre-requisties
+ - Node 18 or higher
+ - Figma API key
+ - URL of Figma icon file
+ - `.env` file
 
-- You will need a DEV_TOKEN (See Step 5 of Setup)
-- Your Icons are in a single Frame
-- Each icon is a Figma Component (Select Icon and use the shortcut key ⌥⌘K)
-  ![Screenshot of Icon as a Figma Component](documentation/this-is-a-component.png)
+## Setup
 
-### Output
 
-Your SVGs will be generated in `src/svg` folder
+## Export from Figma
 
-### Setup
+[export-figma-svg](https://github.com/jacobtyq/export-figma-svg) is the basis for the Figma SVG exporting process. Because the original script is a few years old it required a number of changes to work with the current Figma API.
 
-1. `yarn install`
-2. Select the frame your icons are in ![Screenshot of a sample Figma project](documentation/export-svg-screenshot.png)
-3. Copy the URL in the browser; it should look similar to `https://www.figma.com/file/abcASewbASmnas/Test?node-id=1%3123`
-4. Run `ts-node src/setupEnv.ts` and paste in your URL copied from step 3 when prompted. This will generate a `.env` file
-5. Generate a DEV_TOKEN a.k.a Personal Access Token by going to Help and Account > Account Settings > Personal Access Token
-6. Add your DEV_TOKEN from step 5 into `.env` file
-7. Run `ts-node src/index.ts` and your SVGs will be generated into `src/svg` folder
-
-### Filtering Private Components (starting with a . or a _)
-1. If you want to ignore / filter private components that start with a . or _, change the FILTER_PRIVATE_COMPONENTS variable to `true`. Thanks to [lennertVanSever for their contribution to this](https://github.com/jacobtyq/export-figma-svg/pull/27)
-### Limitations
-
-Figma API has a fixed number of requests (rate limits) you can call per minute. This script will process a 20 requests per 45 seconds to avoid hitting that limit.
+ - This script originally relied on individual icons rather than ones inside "Component Sets". The script retrieves the "Component Set" first, to get an array of icon names, then uses the `size=x-lg` within that Component Set to get the SVG for that icon.
+  - `axios` was replaced with the native Node `fetch` API.

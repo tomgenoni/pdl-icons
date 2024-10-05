@@ -5,10 +5,12 @@
   "main": "index.ts",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "build:platforms": "pnpm run build:react && pnpm run build:android",
     "build:svgs": "ts-node src/index.ts",
-    "build:react": "svgr --out-dir dist/react svgs --config-file svgr.config.json && pnpm --package=typescript dlx tsc",
-    "build:android": "s2v -f svgs -o dist/android",
+    "build:react": "svgr --out-dir build/tsx svgs --config-file svgr.config.json",
+    "dist:dirs": "rm -rf dist && mkdir -p dist/react dist/android",
+    "dist:react": "pnpm --package=typescript dlx tsc",
+    "dist:android": "s2v -f svgs -o dist/android",
+    "dist:all": "pnpm dist:dirs && pnpm run build:react && pnpm run dist:react && pnpm run dist:android",
     "test": "jest"
   },
   "author": "Tom Genoni <tom@genoni.studio>",
@@ -30,6 +32,9 @@
     "@types/react": "^18.3.11",
     "jest": "^29.7.0",
     "ts-jest": "^29.2.5"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   },
   "packageManager": "pnpm@9.1.1+sha512.14e915759c11f77eac07faba4d019c193ec8637229e62ec99eefb7cf3c3b75c64447882b7c485142451ee3a6b408059cdfb7b7fa0341b975f12d0f7629c71195"
 }
