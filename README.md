@@ -16,9 +16,9 @@ This project is a series of scripts that:
 ## Setup
 
 
-## Export from Figma
+## Export SVGs from Figma
 
 [export-figma-svg](https://github.com/jacobtyq/export-figma-svg) is the basis for the Figma SVG exporting process. Because the original script is a few years old it required a number of changes to work with the current Figma API.
 
- - This script originally relied on individual icons rather than ones inside "Component Sets". The script retrieves the "Component Set" first, to get an array of icon names, then uses the `size=x-lg` within that Component Set to get the SVG for that icon.
+ - The script retrieves the "Component Set" first, to get an array of icon names, then uses the `size=x-lg` within that Component Set to get the SVG for that icon.
   - `axios` was replaced with the native Node `fetch` API.
