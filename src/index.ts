@@ -6,7 +6,12 @@ import {
   camelCaseToDash,
   createFolder,
 } from "./utils";
-import { OUTPUT_FOLDER, RATE_LIMIT, WAIT_TIME_IN_SECONDS } from "./constants";
+import {
+  OUTPUT_FOLDER,
+  RATE_LIMIT,
+  WAIT_TIME_IN_SECONDS,
+  FIGMA_SVG_NAME,
+} from "./constants";
 
 interface SVG {
   id: string;
@@ -42,7 +47,7 @@ const svgExporter = async () => {
     // When we iterate through the SVGs, we replace the name of the SVG
     // with the name of the component set, like "AllBots".
     const filteredSVGs: SVG[] = svgs
-      .filter((svg) => svg.name === "size=x-lg")
+      .filter((svg) => svg.name === FIGMA_SVG_NAME)
       .map((svg, index: number) => ({
         ...svg,
         name: sets[index].name,
