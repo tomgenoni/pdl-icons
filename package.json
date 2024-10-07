@@ -6,11 +6,11 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "build:svgs": "ts-node src/index.ts",
-    "build:react": "svgr --out-dir build/tsx svgs --config-file svgr.config.json",
-    "dist:dirs": "rm -rf dist && mkdir -p dist/react dist/android",
-    "dist:react": "pnpm --package=typescript dlx tsc",
-    "dist:android": "s2v -f svgs -o dist/android",
-    "dist:all": "pnpm dist:dirs && pnpm run build:react && pnpm run dist:react && pnpm run dist:android",
+    "build:dirs": "rm -rf dist && mkdir -p dist/typescript dist/javascript dist/android",
+    "build:tsx": "svgr --out-dir dist/typescript svgs --config-file svgr.config.json",
+    "build:js": "pnpm --package=typescript dlx tsc",
+    "build:android": "s2v -f svgs -o dist/android",
+    "build:all": "pnpm build:dirs && pnpm run build:tsx && pnpm run build:js && pnpm run build:android",
     "test": "jest"
   },
   "author": "Tom Genoni <tom@genoni.studio>",

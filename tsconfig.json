@@ -2,8 +2,8 @@
   "compilerOptions": {
     "jsx": "react",
     "module": "commonjs",
-    "rootDir": "build/tsx",
-    "outDir": "./dist/react/",
+    "rootDir": "dist/typescript",
+    "outDir": "./dist/javascript/",
     "allowJs": true,
     "target": "es6",
     "moduleResolution": "node",
@@ -11,6 +11,6 @@
     "declaration": true,
     "esModuleInterop": true
   },
-  "include": ["build/tsx/**/*.tsx", "build/tsx/**/*.ts"],
+  "include": ["dist/typescript/**/*.tsx", "build/typescript/**/*.ts"],
   "exclude": ["node_modules", "<node_internals>/**", "built"]
 }
