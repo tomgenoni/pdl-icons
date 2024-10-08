@@ -1,5 +1,11 @@
 # @tomgenoni/pdl-icons
 
+## 2.2.0
+
+### Minor Changes
+
+- 6019b49: Adding 6 new icons
+
 ## 2.1.0
 
 ### Minor Changes
