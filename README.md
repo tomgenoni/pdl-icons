@@ -26,13 +26,13 @@ To release SVG changes to the package:
 6. Review and merge the "changeset" pull request into `main`. This will trigger a GitHub Action [workflow](https://github.com/tomgenoni/pdl-icons/blob/main/.github/workflows/release.yml) that publishes the [updated package](https://github.com/tomgenoni/pdl-icons/pkgs/npm/pdl-icons) to the GitHub Package npm registry.
 7. On successful publish, the workflow will force merge changes to `main` with the version number bump in `package.json` and updates to the `CHANGELOG.md`.
 
-**Note:** It is possible to publish the package manually with `pnpm publish` but it not recommended.
+**Note:** It is possible to publish the package manually with `pnpm publish` but it not recommended as there are multiple steps that need to be completed before publishing that are automated by the GitHub Action workflow.
 
 ## Skip publishing the package on merge
 
-To merge a pull request without publishing the package, you can `[skip ci]` to the commit message. This prevents the GitHub Action workflow from running and attempting publishing the package.
+To merge commits without publishing the package, you can `[skip ci]` to the commit message. This prevents the GitHub Action workflow from running and attempting publishing the package.
 
-**Note:** If commits merged into `main` do not have a changeset or `[skip ci]`, the GitHub Action workflow will run but will not publish a new package.
+**Note:** If commits merged into `main` do not have a changeset or `[skip ci]` in the commit message, the GitHub Action workflow will run but will not publish a new package.
 
 ## Technical details
 
