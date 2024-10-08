@@ -6,8 +6,11 @@
   "files": [
     "dist"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tomgenoni/pdl-svg-export.git"
+  },
   "publishConfig": {
-    "access": "public",
     "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
