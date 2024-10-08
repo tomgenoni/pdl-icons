@@ -1,13 +1,19 @@
 {
-  "name": "export-figma-svg",
+  "name": "@tomgenoni/pdl-svg-export",
   "description": "Export SVGs from Figma and build platforms",
   "version": "1.0.0",
   "main": "index.ts",
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
+  },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
+    "changeset": "changeset",
+    "release": "changeset publish",
     "get:svgs": "ts-node src/index.ts",
     "clear": "rm -rf dist",
     "mkdir": "mkdir -p dist/typescript dist/javascript dist/android",
@@ -33,6 +39,7 @@
     "typescript": "^5.6.2"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.27.9",
     "@svgr/cli": "^8.1.0",
     "@types/jest": "^29.5.13",
     "@types/node": "^22.7.4",
