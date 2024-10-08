@@ -1,5 +1,5 @@
 {
-  "name": "@tomgenoni/pdl-svg-export",
+  "name": "@tomgenoni/pdl-icons",
   "description": "Export SVGs from Figma and build platforms",
   "version": "1.0.0",
   "main": "index.ts",
@@ -8,7 +8,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/tomgenoni/pdl-svg-export.git"
+    "url": "https://github.com/tomgenoni/pdl-icons.git"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
