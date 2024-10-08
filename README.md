@@ -30,9 +30,9 @@ To release SVG changes to the package:
 
 ## Committing changes without publishing the package
 
-To merge commits without publishing the package, you can `[skip ci]` to the commit message. This prevents the GitHub Action workflow from running and attempting publishing the package.
+Add `[skip ci]` to the commit message of changes that shouldn't trigger a publish. For example, updating the README. `[skip ci]` prevents the GitHub Action workflow from running on that commit.
 
-**Note:** If commits merged into `main` do not have a changeset or `[skip ci]` in the commit message, the GitHub Action workflow will run but will not publish a new package.
+**Note:** If commits merged into `main` do not have a changeset or `[skip ci]` in the commit message, the GitHub Action workflow will run but will not publish a new package because it will not find any changeset data.
 
 ## Technical details
 
@@ -55,7 +55,7 @@ The [changesets](https://github.com/changesets/changesets) package, and the asso
 
 ### Publishing to GitHub Package Registry
 
-To publish to the GitHub Package Registry, the `package.json` file must contain:
+To publish to the GitHub Package Registry, the `package.json` file contains:
 
 ```
 "publishConfig": {
