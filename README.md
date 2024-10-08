@@ -28,7 +28,7 @@ To release SVG changes to the package:
 
 **Note:** It is possible to publish the package manually with `pnpm publish` but it not recommended as there are multiple steps that need to be completed before publishing that are automated by the GitHub Action workflow.
 
-## Skip publishing the package on merge
+## Committing changes without publishing the package
 
 To merge commits without publishing the package, you can `[skip ci]` to the commit message. This prevents the GitHub Action workflow from running and attempting publishing the package.
 
