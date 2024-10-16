@@ -24,7 +24,7 @@
     "build:web": "pnpm run build:web:tsx && pnpm run build:web:js",
     "build:web:tsx": "svgr --out-dir dist/typescript svgs --config-file svgr.config.json",
     "build:web:js": "pnpm --package=typescript dlx tsc",
-    "build:native": "pnpm run build:native:android",
+    "build:native": "pnpm run build:native:android && pnpm run build:native:swift",
     "build:native:android": "s2v -f svgs -o dist/android",
     "build:native:swift": "./src/swift/buildSymbols.sh",
     "prepublish": "pnpm build",
