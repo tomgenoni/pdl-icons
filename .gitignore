@@ -6,3 +6,6 @@ build
 built/
 # TS -incremental file
 tsconfig.tsbuildinfo
+
+# Hide SwiftDraw build dir
+SwiftDraw
