@@ -21,9 +21,6 @@ jobs:
           node-version: 20.x
           registry-url: "https://npm.pkg.github.com"
 
-      - name: Setup npm
-        uses: npm/action-setup@v3
-
       - name: Install Dependencies
         run: npm run install
 
