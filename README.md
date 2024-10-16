@@ -13,16 +13,21 @@ This project publishes a package with PDL SVG icons for Web and Native projects.
  - URL of Figma icon file
  - `.env` file with Figma API key and Figma file info
  - `~/.npmrc` file with GitHub tokens
+ - `SwiftDraw` for Swift icon generation
 
 ## Setup
 
-If you're only consuming the package, you can install add the following to your `~/.npmrc` file:
+### Consuming the package
+
+You can install the package the following to your `~/.npmrc` file:
 
 ```
 @tomgenoni:registry=https://npm.pkg.github.com
 ```
 
-If you're publishing the package, you'll need to add a GitHub token to your `~/.npmrc` file:
+### Developing or publishing the package
+
+If you're publishing from your local machine, you will need the following GitHub token to your `~/.npmrc` file:
 
 ```
 //npm.pkg.github.com/:_authToken=GITHUB_TOKEN
@@ -30,6 +35,19 @@ If you're publishing the package, you'll need to add a GitHub token to your `~/.
 
 [Permissions](https://docs.github.com/en/packages/learn-github-packages/about-permissions-for-github-packages#about-scopes-and-permissions-for-package-registries) for the token should include `read:packages`, `write:packages`, `delete:packages` and `repo`.
 
+### SwiftDraw
+
+Installing `swiftdraw` is only required if you are generating Swift icons locally. The Swift icons are generated automatically when the package is published.
+
+```
+brew install swiftdraw
+```
+
+and run with
+
+```
+npm run build:native:swift
+```
 
 ## Publishing the package
 
