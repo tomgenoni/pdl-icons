@@ -1,5 +1,12 @@
 # @tomgenoni/pdl-icons
 
+## 3.0.0
+
+### Major Changes
+
+- 6c7154d: Another icon gone
+- 1beedd6: Removing an icon
+
 ## 2.2.0
 
 ### Minor Changes
