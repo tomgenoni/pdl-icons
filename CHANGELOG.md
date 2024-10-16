@@ -1,5 +1,11 @@
 # @tomgenoni/pdl-icons
 
+## 4.0.0
+
+### Major Changes
+
+- 1ce5df5: Yet another icon gone
+
 ## 3.0.0
 
 ### Major Changes
