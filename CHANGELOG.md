@@ -1,5 +1,11 @@
 # @tomgenoni/pdl-icons
 
+## 4.1.0
+
+### Minor Changes
+
+- 2074120: Minor
+
 ## 4.0.0
 
 ### Major Changes
