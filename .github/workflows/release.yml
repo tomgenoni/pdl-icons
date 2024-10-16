@@ -22,7 +22,7 @@ jobs:
           registry-url: "https://npm.pkg.github.com"
 
       - name: Install Dependencies
-        run: npm run install
+        run: npm install
 
       - name: Install SwiftDraw
         run: |
