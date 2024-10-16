@@ -14,43 +14,41 @@
     "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
     "changeset": "changeset",
     "release": "changeset publish",
     "get:svgs": "ts-node src/figma/index.ts",
     "clear": "rm -rf dist",
     "mkdir": "mkdir -p dist/typescript dist/javascript dist/android dist/swift",
-    "build": "pnpm clear && pnpm mkdir && pnpm build:web && pnpm build:native",
-    "build:web": "pnpm run build:web:tsx && pnpm run build:web:js",
+    "build": "npm run clear && npm run mkdir && npm run build:web && npm run build:native",
+    "build:web": "npm run build:web:tsx && npm run build:web:js",
     "build:web:tsx": "svgr --out-dir dist/typescript svgs --config-file svgr.config.json",
-    "build:web:js": "pnpm --package=typescript dlx tsc",
-    "build:native": "pnpm run build:native:android && pnpm run build:native:swift",
+    "build:web:js": "npx tsc",
+    "build:native": "npm run build:native:android && npm run build:native:swift",
     "build:native:android": "s2v -f svgs -o dist/android",
     "build:native:swift": "./src/swift/buildSymbols.sh",
-    "prepublish": "pnpm build",
+    "prepublish": "npm run build",
     "test": "jest"
   },
   "author": "Tom Genoni <tom@genoni.studio>",
   "license": "UNLICENSED",
   "devDependencies": {
-    "dotenv": "^16.4.5",
-    "fs": "0.0.1-security",
-    "pg": "^8.13.0",
-    "react": "^18.3.1",
-    "svg2vectordrawable": "^2.9.1",
-    "ts-node": "^10.9.2",
-    "tsc": "^2.0.4",
-    "typescript": "^5.6.2",
     "@changesets/cli": "^2.27.9",
     "@svgr/cli": "^8.1.0",
     "@types/jest": "^29.5.13",
     "@types/node": "^22.7.4",
     "@types/react": "^18.3.11",
+    "dotenv": "^16.4.5",
+    "fs": "0.0.1-security",
     "jest": "^29.7.0",
-    "ts-jest": "^29.2.5"
+    "pg": "^8.13.0",
+    "react": "^18.3.1",
+    "svg2vectordrawable": "^2.9.1",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2",
+    "tsc": "^2.0.4",
+    "typescript": "^5.6.3"
   },
   "engines": {
     "node": ">=20.0.0"
-  },
-  "packageManager": "pnpm@9.1.1+sha512.14e915759c11f77eac07faba4d019c193ec8637229e62ec99eefb7cf3c3b75c64447882b7c485142451ee3a6b408059cdfb7b7fa0341b975f12d0f7629c71195"
+  }
 }
