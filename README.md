@@ -27,7 +27,7 @@ You can install the package the following to your `~/.npmrc` file:
 
 ### Developing or publishing the package
 
-If you're publishing from your local machine, you will need the following GitHub token to your `~/.npmrc` file:
+This step is only required if you are publishing from your local machine. It is not necessary if you're relying on merges to `main` to handle the publish. If so, you will need the following GitHub token to your `~/.npmrc` file:
 
 ```
 //npm.pkg.github.com/:_authToken=GITHUB_TOKEN
