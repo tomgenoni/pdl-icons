@@ -27,6 +27,13 @@ jobs:
       - name: Install Dependencies
         run: pnpm install
 
+      - name: Install SwiftDraw
+        run: |
+          git clone https://github.com/swhitty/SwiftDraw.git
+          cd SwiftDraw
+          swift build -c release
+          sudo cp .build/release/swiftdraw /usr/local/bin/
+
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         uses: changesets/action@v1
