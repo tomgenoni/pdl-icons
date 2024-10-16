@@ -22,7 +22,7 @@
     "build": "npm run clear && npm run mkdir && npm run build:web && npm run build:native",
     "build:web": "npm run build:web:tsx && npm run build:web:js",
     "build:web:tsx": "svgr --out-dir dist/typescript svgs --config-file svgr.config.json",
-    "build:web:js": "npx tsc",
+    "build:web:js": "./node_modules/typescript/bin/tsc",
     "build:native": "npm run build:native:android && npm run build:native:swift",
     "build:native:android": "s2v -f svgs -o dist/android",
     "build:native:swift": "./src/swift/buildSymbols.sh",
