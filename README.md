@@ -107,4 +107,8 @@ To publish to the GitHub Package Registry, the `package.json` file contains:
 
 #### Android
 
- - The XML files are built using [`svg2vectordrawable`]https://github.com/Ashung/svg2vectordrawable).
+ - The XML files are built using [`svg2vectordrawable`](https://github.com/Ashung/svg2vectordrawable).
+
+#### iOS
+
+ - `svg` and `swift` files are built using [SwiftDraw](https://github.com/swhitty/SwiftDraw)).
