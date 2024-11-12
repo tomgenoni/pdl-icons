@@ -85,7 +85,7 @@ The [changesets](https://github.com/changesets/changesets) package, and the asso
 
 [export-figma-svg](https://github.com/jacobtyq/export-figma-svg) is the basis for the Figma SVG exporting process. Because the original script is a few years old it required a number of changes to work with the current Figma API:
 
- - The script retrieves the "Component Set" first, to get an array of icon names, then uses the `size=x-lg` within that Component Set to get the SVG for that icon.
+ - The script now retrieves the "Component Set" first, to get an array of icon names, then uses the `size=x-lg` within that Component Set to get the SVG code for that icon.
  - `axios` was replaced with the native Node `fetch` API.
 
 ### Publishing to GitHub Package Registry
@@ -103,7 +103,7 @@ To publish to the GitHub Package Registry, the `package.json` file contains:
 #### Web
 
  - Typescript files are generated using the [`svgr` cli](https://react-svgr.com/).
- - Compiled javascript files are generated using the `tsc` compiler the typescript files as the source.
+ - Compiled javascript files are generated using the `tsc` compiler, using the typescript files as the source.
 
 #### Android
 
@@ -111,4 +111,4 @@ To publish to the GitHub Package Registry, the `package.json` file contains:
 
 #### iOS
 
- - `svg` and `swift` files are built using [SwiftDraw](https://github.com/swhitty/SwiftDraw)).
+ - `svg` and `swift` files are built using [SwiftDraw](https://github.com/swhitty/SwiftDraw).
