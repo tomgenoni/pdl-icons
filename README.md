@@ -3,7 +3,7 @@
 This project publishes a package with PDL SVG icons for Web and Native projects.
 
 - For Web projects, the package includes `typescript` and compiled `javascript` files.
-- For Androind, the package includes `xml` files.
+- For Android, the package includes `xml` files.
 
 ## Requirements
 
