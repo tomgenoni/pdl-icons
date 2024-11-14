@@ -13,11 +13,11 @@ for file in "$INPUT_DIR"/*.svg; do
     filename=$(basename -- "$file")
     filename_no_ext="${filename%.*}"
 
-    output_sfsymbol="$OUTPUT_DIR/${filename_no_ext}-symbol.svg"
+    output_sfsymbol="$OUTPUT_DIR/${filename_no_ext}.svg"
 
     # Run the swiftdraw command on each file
     echo "Processing $file..."
-    swiftdraw "$file" --format sfsymbol --insets 40,30,40,30 --output "$output_sfsymbol"
+    swiftdraw "$file" --format sfsymbol --output "$output_sfsymbol"
 
   else
     echo "No SVG files found in $INPUT_DIR"

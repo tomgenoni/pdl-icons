@@ -1,11 +1,6 @@
 import "dotenv/config";
 import figmaRestApi from "./api/";
-import {
-  writeToFile,
-  findAllByValue,
-  camelCaseToDash,
-  createFolder,
-} from "./utils";
+import { writeToFile, findAllByValue, camelCase, createFolder } from "./utils";
 import {
   OUTPUT_FOLDER,
   RATE_LIMIT,
@@ -68,10 +63,7 @@ const svgExporter = async () => {
           // Get SVG DOM using fetch
           const response = await fetch(svgURL.images[svg.id]);
           const svgDOM = await response.text();
-          writeToFile(
-            OUTPUT_FOLDER + `${camelCaseToDash(svgName)}.svg`,
-            svgDOM
-          );
+          writeToFile(OUTPUT_FOLDER + `${camelCase(svgName)}.svg`, svgDOM);
         });
 
       await Promise.all(requests)

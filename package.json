@@ -19,7 +19,7 @@
     "get:svgs": "ts-node src/figma/index.ts",
     "clear": "rm -rf dist",
     "mkdir": "mkdir -p dist/typescript dist/javascript dist/android dist/ios",
-    "build": "npm run clear && npm run mkdir && npm run build:web && npm run build:native",
+    "build": "npm run clear && npm run mkdir && npm run get:svgs && npm run build:web && npm run build:native",
     "build:web": "npm run build:web:tsx && npm run build:web:js",
     "build:web:tsx": "svgr --out-dir dist/typescript svgs --config-file svgr.config.json",
     "build:web:js": "./node_modules/typescript/bin/tsc",
