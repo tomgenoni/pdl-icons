@@ -5,7 +5,7 @@ const template = (variables, { tpl }) => {
   return tpl`
 import React from "react";
 
-import { getInlineIconStyles, ICON_SIZE, IconTypes } from "../iconHelpers";
+import { getInlineIconStyles, ICON_SIZE, IconTypes } from "../lib/iconHelpers";
 
 const ${convertedComponentName}: React.FC<IconTypes> = ({ size = "lg", className }) => {
   return (
