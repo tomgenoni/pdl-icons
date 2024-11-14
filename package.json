@@ -21,7 +21,7 @@
     "mkdir": "mkdir -p dist/tsx dist/js dist/android dist/ios",
     "build": "npm run clear && npm run mkdir && npm run get:svgs && npm run build:web && npm run build:native",
     "build:web": "npm run build:web:tsx && npm run build:web:js",
-    "build:web:tsx": "svgr svgs --template ./src/tsx/svgr-template.js --config-file svgr.config.json",
+    "build:web:tsx": "svgr svgs --template ./src/tsx/svgr-component-template.js --index-template ./src/tsx/svgr-index-template.js --config-file svgr.config.json",
     "build:web:js": "./node_modules/typescript/bin/tsc",
     "build:native": "npm run build:native:android && npm run build:native:ios",
     "build:native:android": "s2v -f svgs -o dist/android",

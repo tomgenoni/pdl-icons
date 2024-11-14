@@ -2,7 +2,7 @@
   "typescript": true,
   "replaceAttrValues": { "#000": "currentColor" },
   "expandProps": false,
-  "outDir": "./dist/tsx",
+  "outDir": "./dist/tsx/components",
   "svgProps": {
     "width": "{ICON_SIZE[size]}",
     "height": "{ICON_SIZE[size]}",
