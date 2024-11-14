@@ -1,4 +1,13 @@
 {
   "typescript": true,
-  "replaceAttrValues": { "#000": "currentColor" }
+  "replaceAttrValues": { "#000": "currentColor" },
+  "expandProps": false,
+  "outDir": "./dist/tsx",
+  "svgProps": {
+    "width": "{ICON_SIZE[size]}",
+    "height": "{ICON_SIZE[size]}",
+    "viewBox": "0 0 24 24",
+    "className": "{className}",
+    "style": "{getInlineIconStyles(size)}"
+  }
 }
