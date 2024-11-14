@@ -5,7 +5,6 @@ INPUT_DIR="./svgs"
 OUTPUT_DIR="./dist/ios"
 
 # Loop through all SVG files in the source directory
-# Loop through all SVG files in the directory
 for file in "$INPUT_DIR"/*.svg; do
   # Check if there are any SVG files
   if [[ -e "$file" ]]; then
