@@ -6,9 +6,11 @@ import { getInlineIconStyles, ICON_SIZE, IconTypes } from "../iconHelpers";
 
 ${variables.interfaces};
 
-const ${variables.componentName} = (${variables.props}) => (
-  ${variables.jsx}
-);
+const ${variables.componentName}: React.FC<IconTypes> = ({ size = "lg", className }) => {
+  return (
+    ${variables.jsx}
+  )
+};
 
 ${variables.exports};
 `;
