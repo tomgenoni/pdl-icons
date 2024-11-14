@@ -25,20 +25,20 @@ export const flattenArray = (arr: any[], d: number = 1) => {
 };
 
 export const findAllByValue = (
-  obj: { id: string; name: string },
+  obj: { [key: string]: any },
   valueToFind: string
 ) => {
   return Object.entries(obj).reduce(
-    (acc, [key, value]) =>
+    (acc, [_, value]) =>
       value === valueToFind
         ? acc.concat({
-            id: Object.values(obj.id).join(""),
-            name: Object.values(obj.name).join(""),
+            id: obj.id,
+            name: obj.name,
           })
         : typeof value === "object" && value !== null
         ? acc.concat(findAllByValue(value, valueToFind))
         : acc,
-    []
+    [] as { id: string; name: string }[]
   );
 };
 
