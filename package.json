@@ -18,10 +18,10 @@
     "release": "changeset publish",
     "get:svgs": "ts-node src/figma/index.ts",
     "clear": "rm -rf dist",
-    "mkdir": "mkdir -p dist/typescript dist/javascript dist/android dist/ios",
+    "mkdir": "mkdir -p dist/tsx dist/js dist/android dist/ios",
     "build": "npm run clear && npm run mkdir && npm run get:svgs && npm run build:web && npm run build:native",
     "build:web": "npm run build:web:tsx && npm run build:web:js",
-    "build:web:tsx": "svgr --out-dir dist/typescript svgs --config-file svgr.config.json",
+    "build:web:tsx": "svgr svgs --template ./src/tsx/svgr-component-template.js --index-template ./src/tsx/svgr-index-template.js --config-file svgr.config.json && cp -r ./src/tsx/lib ./dist/tsx/",
     "build:web:js": "./node_modules/typescript/bin/tsc",
     "build:native": "npm run build:native:android && npm run build:native:ios",
     "build:native:android": "s2v -f svgs -o dist/android",
@@ -34,6 +34,8 @@
   "devDependencies": {
     "@changesets/cli": "^2.27.9",
     "@svgr/cli": "^8.1.0",
+    "@svgr/core": "^8.1.0",
+    "@types/fs-extra": "^11.0.4",
     "@types/jest": "^29.5.13",
     "@types/node": "^22.7.4",
     "@types/react": "^18.3.11",
@@ -50,5 +52,9 @@
   },
   "engines": {
     "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "@svgr/babel-plugin-replace-jsx-attribute-value": "^8.0.0",
+    "fs-extra": "^11.2.0"
   }
 }
