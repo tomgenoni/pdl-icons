@@ -8,7 +8,7 @@ const OUTPUT_DIR = "./dist/ios";
 
 // Function to convert a string to camelCase
 function toCamelCase(str) {
-  return str.replace(/-([a-z])/g, (match, p1) => p1.toUpperCase());
+  return str.replace(/-([a-z0-9])/g, (match, p1) => p1.toUpperCase());
 }
 
 // Function to process each SVG file
