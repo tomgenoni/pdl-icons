@@ -1,5 +1,11 @@
 # @tomgenoni/pdl-icons
 
+## 5.0.1
+
+### Patch Changes
+
+- ee75fb9: Adding ios
+
 ## 5.0.0
 
 ### Major Changes
