@@ -1,5 +1,11 @@
 # @tomgenoni/pdl-icons
 
+## 5.1.0
+
+### Minor Changes
+
+- 9e8d304: Add new icon
+
 ## 5.0.1
 
 ### Patch Changes
