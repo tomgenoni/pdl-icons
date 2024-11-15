@@ -55,10 +55,10 @@ To release SVG changes to the package:
 
 1. Create a new branch from `main`.
 2. Run `npm run get:svgs` to import SVG changes from Figma into `icons`.
-3. Create a [changeset](https://github.com/changesets/changesets/tree/main?tab=readme-ov-file) with `npx changeset` to add the [semver](https://semver.org/) serverity and describe the change.
-4. Push your branch, open a pull request, and merge it into `main`. Note: at this point the changes are in `main` but the package has not been published.
-5. After your branch has merged, a "changeset" pull request will be auto-created with your changes. Multiple pull requests can be merged into `main` before publishing and the "changeset" pull request will stack changes.
-6. Review and merge the "changeset" pull request into `main`. This will trigger a GitHub Action [workflow](https://github.com/tomgenoni/pdl-icons/blob/main/.github/workflows/release.yml) that publishes the [updated package](https://github.com/tomgenoni/pdl-icons/pkgs/npm/pdl-icons) to the GitHub Package npm registry.
+3. Run `npx changeset` to create a [changeset](https://github.com/changesets/changesets/tree/main?tab=readme-ov-file) with the [semver](https://semver.org/) serverity and describe the change.
+4. Push your branch to GitHub, open a Pull Request, and merge it into `main` when ready. Note: at this point the changes are in `main` but the package has not been published.
+5. After about 30 seconds or so after your branch has merged, a "changeset" Pull Request called "Version Packages" will be auto-created with all unpublished changes. Multiple pull requests can be merged into `main` before publishing and the "changeset" Pull Request will stack changes.
+6. Review the "Version Packages" Pull Request and merge into `main`. This will trigger a GitHub Action [workflow](https://github.com/tomgenoni/pdl-icons/blob/main/.github/workflows/release.yml) that publishes the [updated package](https://github.com/tomgenoni/pdl-icons/pkgs/npm/pdl-icons) to the GitHub Package npm registry.
 7. On successful publish, the workflow will force merge changes to `main` with the version number bump in `package.json` and updates to the `CHANGELOG.md`.
 
 **Note:** It is possible to publish the package manually with `npm run publish` but it not recommended as there are multiple steps that need to be completed before publishing that are automated by the GitHub Action workflow.
