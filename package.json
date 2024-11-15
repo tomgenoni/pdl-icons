@@ -19,7 +19,7 @@
     "get:svgs": "ts-node src/figma/index.ts",
     "clear": "rm -rf dist",
     "mkdir": "mkdir -p dist/tsx dist/android dist/ios",
-    "build": "npm run clear && npm run mkdir && npm run get:svgs && npm run build:web && npm run build:native",
+    "build": "npm run clear && npm run mkdir && npm run build:web && npm run build:native",
     "build:web": "npm run build:web:tsx",
     "build:web:tsx": "svgr svgs --template ./src/tsx/svgr-component-template.js --index-template ./src/tsx/svgr-index-template.js --config-file svgr.config.json && cp -r ./src/tsx/lib ./dist/tsx/",
     "build:native": "npm run build:native:android && npm run build:native:ios",
