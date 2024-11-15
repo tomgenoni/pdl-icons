@@ -1,5 +1,11 @@
 # @tomgenoni/pdl-icons
 
+## 5.0.0
+
+### Major Changes
+
+- 8ecd590: Creating all new icons
+
 ## 4.1.0
 
 ### Minor Changes
