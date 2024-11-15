@@ -51,9 +51,5 @@
   },
   "engines": {
     "node": ">=20.0.0"
-  },
-  "dependencies": {
-    "@svgr/babel-plugin-replace-jsx-attribute-value": "^8.0.0",
-    "fs-extra": "^11.2.0"
   }
 }
