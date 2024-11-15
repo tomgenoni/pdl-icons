@@ -24,7 +24,7 @@
     "build:web:tsx": "svgr svgs --template ./src/tsx/svgr-component-template.js --index-template ./src/tsx/svgr-index-template.js --config-file svgr.config.json && cp -r ./src/tsx/lib ./dist/tsx/",
     "build:native": "npm run build:native:android && npm run build:native:ios",
     "build:native:android": "s2v -f svgs -o dist/android",
-    "build:native:ios": "./src/ios/buildSymbols.sh",
+    "build:native:ios": "node ./src/ios/buildSymbols.js",
     "prepublish": "npm run build",
     "test": "jest"
   },
