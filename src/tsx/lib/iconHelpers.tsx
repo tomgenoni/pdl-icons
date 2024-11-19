@@ -1,5 +1,3 @@
-import styles from "./iconHelpers.module.css";
-
 export type IconSize = "x-sm" | "sm" | "md" | "lg" | "x-lg";
 
 export interface IconTypes {
@@ -24,5 +22,3 @@ export const getInlineIconStyles = (size: IconSize) => ({
   display: "block",
   flex: "none",
 });
-
-export const getIconSizeClassName = (size: IconSize) => styles[size];
