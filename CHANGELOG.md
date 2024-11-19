@@ -1,5 +1,11 @@
 # @tomgenoni/pdl-icons
 
+## 7.0.0
+
+### Major Changes
+
+- 35a78c6: Another test
+
 ## 6.1.0
 
 ### Minor Changes
