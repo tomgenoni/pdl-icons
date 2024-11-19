@@ -46,7 +46,7 @@ brew install swiftdraw
 and run with
 
 ```
-npm run build:native:swift
+npm run build:native:is
 ```
 
 ## Publishing the package
@@ -111,4 +111,4 @@ To publish to the GitHub Package Registry, the `package.json` file contains:
 
 #### iOS
 
- - `svg` and `swift` files are built using [SwiftDraw](https://github.com/swhitty/SwiftDraw).
+ - `svg` and `ios` files are built using [SwiftDraw](https://github.com/swhitty/SwiftDraw).
