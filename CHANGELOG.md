@@ -1,5 +1,11 @@
 # @tomgenoni/pdl-icons
 
+## 9.0.1
+
+### Patch Changes
+
+- e4300f8: remove css
+
 ## 9.0.0
 
 ### Major Changes
