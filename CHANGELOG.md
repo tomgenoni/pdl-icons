@@ -1,5 +1,11 @@
 # @tomgenoni/pdl-icons
 
+## 6.0.1
+
+### Patch Changes
+
+- 5fce96a: Update path to entry
+
 ## 6.0.0
 
 ### Major Changes
