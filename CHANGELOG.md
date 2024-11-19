@@ -1,5 +1,11 @@
 # @tomgenoni/pdl-icons
 
+## 6.0.0
+
+### Major Changes
+
+- e404832: Full set of icons
+
 ## 5.1.0
 
 ### Minor Changes
