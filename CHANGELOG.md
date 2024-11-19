@@ -1,5 +1,11 @@
 # @tomgenoni/pdl-icons
 
+## 6.1.0
+
+### Minor Changes
+
+- 9d40da3: Update paths
+
 ## 6.0.1
 
 ### Patch Changes
