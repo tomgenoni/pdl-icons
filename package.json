@@ -1,7 +1,7 @@
 {
   "name": "@tomgenoni/pdl-icons",
   "description": "Export SVGs from Figma and build platforms",
-  "version": "8.0.0",
+  "version": "9.0.0",
   "main": "dist/js/components/index.js",
   "files": [
     "dist"
