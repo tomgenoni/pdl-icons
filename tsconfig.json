@@ -9,12 +9,13 @@
     "moduleResolution": "node",
     "types": ["node"],
     "declaration": true,
-    "esModuleInterop": true,
-    "baseUrl": "./",
-    "paths": {
-      "*": ["src/types/*"]
-    }
+    "esModuleInterop": true
   },
-  "include": ["src/types", "dist/tsx/**/*.tsx", "build/tsx/**/*.ts"],
+  "include": [
+    "src/types",
+    "dist/tsx/**/*.tsx",
+    "dist/tsx/**/*.ts",
+    "build/tsx/**/*.ts"
+  ],
   "exclude": ["node_modules", "<node_internals>/**", "built"]
 }
