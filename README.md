@@ -102,7 +102,7 @@ To publish to the GitHub Package Registry, the `package.json` file contains:
 
 #### Web
 
- - Typescript files are generated using the [`svgr` cli](https://react-svgr.com/).
+ - TypeScript files are generated using the [`svgr` cli](https://react-svgr.com/).
  - Compiled javascript files are generated using the `tsc` compiler, using the typescript files as the source.
 
 #### Android
